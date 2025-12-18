@@ -1,0 +1,7 @@
+FROM alpine:latest
+RUN apk update && apk add --no-cache openssh openjdk21 bash
+RUN ssh-keygen -A
+RUN adduser -D -h /home/jenkins -s /bin/bash jenkins 
+RUN echo "jenkins:jenkins" | chpasswd
+EXPOSE 22
+CMD ["/usr/sbin/sshd","-D"]

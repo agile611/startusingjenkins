@@ -27,4 +27,10 @@ Vagrant.configure(2) do |config|
     end
   end
 
+  config.vm.define "agent2" do |agent2|
+    agent2.vm.box = "bento/ubuntu-24.04"
+    agent2.vm.network "private_network", ip: "192.168.11.14"
+    agent2.vm.hostname = "agent2"
+  end
+
 end
